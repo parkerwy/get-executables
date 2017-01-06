@@ -2,6 +2,18 @@ require('jquery');
 const os = require('os');
 const fs = require('fs');
 const request = require('request');
+const Config = require('electron-config');
+const config = new Config();
+
+
+
+function loadConfig() {
+    $('#proxyHost').val(config.get('proxy.host'));
+    $('#proxyPort').val(config.get('proxy.port'));
+    $('#proxyUser').val(config.get('proxy.username'));
+    console.log('loaded default config.');
+}
+
 
 function download() {
     console.log('download called.');
@@ -18,6 +30,10 @@ function download() {
     }
     console.log(proxy);
     requestWithProxy(url, proxy);
+
+    config.set('proxy.host', host);
+    config.set('proxy.port', port);
+    config.set('proxy.username', user);
 }
 
 function requestWithProxy(url, proxy) {
@@ -25,7 +41,7 @@ function requestWithProxy(url, proxy) {
     var saveAs = `${os.homedir()}/Desktop/${filename}`;
     console.log(`download [${url}] as [${saveAs}] via proxy [${proxy}]`);
     var r = request.defaults({
-        'proxy': proxy
+        //'proxy': proxy
     });
     r.get(url)
         .on('response', function(response) {
