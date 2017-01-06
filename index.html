@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Get Executables</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Get Executables</title>
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <script>
+            window.$ = window.jQuery = require('jquery');
+        </script>
+        <script src="src/index.js"></script>
+    </head>
+    <body class="container">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" class="form-control" id="url" placeholder="Enter a URL">
+            </div>
+            <div class="form-group">
+                http://
+                <input type="text" class="form-control" style="max-width: 8em;" id="proxyUser" placeholder="user name">
+                :
+                <input type="password" class="form-control" style="max-width: 8em;" id="proxyPassword" placeholder="password">
+                @
+                <input type="text" class="form-control" style="max-width: 20em;" id="proxyHost" placeholder="host">
+                :
+                <input type="text" class="form-control" style="max-width: 5em;" id="proxyPort" placeholder="port">
+                /
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary" onclick="download();">Get It!</button>
+    </body>
 </html>
