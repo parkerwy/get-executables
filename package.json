@@ -1,0 +1,22 @@
+{
+  "name": "get-executables",
+  "version": "1.0.0",
+  "description": "Get executables via proxy.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkerwy/get-executables.git"
+  },
+  "author": "Parker Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkerwy/get-executables/issues"
+  },
+  "homepage": "https://github.com/parkerwy/get-executables#readme",
+  "dependencies": {
+    "electron": "^1.4.13"
+  }
+}
