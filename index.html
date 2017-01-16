@@ -1,71 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Get Executables</title>
-        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <script>
-            window.$ = window.jQuery = require('jquery');
-        </script>
-        <script src="src/index.js"></script>
-    </head>
-    <body class="container-fluid">
-        <header class="text-center">
-            <h2>Get Executables</h2>
-            <h3>via proxy</h3>
-        </header>
-        <hr/>
-        <section class="row">
-            <form class="form-horizontal col-xs-10 col-xs-offset-1">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="url" class="col-xs-3 control-label">URL</label>
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" id="url" placeholder="What to download?">
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form-group">
-                        <label for="proxyHost" class="col-xs-3 control-label">Proxy Host</label>
-                        <div class="col-xs-5">
-                            <input type="text" class="form-control" id="proxyHost" placeholder="host">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="proxyPort" class="col-xs-3 control-label">Proxy Port</label>
-                        <div class="col-xs-2">
-                            <input type="text" class="form-control" id="proxyPort" placeholder="port">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="proxyUser" class="col-xs-3 control-label">User Name</label>
-                        <div class="col-xs-3">
-                            <input type="text" class="form-control" id="proxyUser" placeholder="user name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="proxyPassword" class="col-xs-3 control-label">Password</label>
-                        <div class="col-xs-3">
-                            <input type="password" class="form-control" id="proxyPassword" placeholder="password">
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form-group" role="group">
-                        <label class="col-xs-3 control-label"></label>
-                        <div class="col-xs-2 btn-group">
-                            <button type="button" class="btn btn-primary" onclick="download();">Download</button>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </section>
-        <footer class="navbar-fixed-bottom text-center">
-          Built by Parker with 85°C Coffee
-        </footer>
-        <script>
-            loadConfig();
-        </script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Get Executables</title>
+  <link href="node_modules/photonkit/dist/css/photon.css" rel="stylesheet" type="text/css">
+  <script>
+      window.$ = window.jQuery = require('jquery');
+  </script>
+  <script src="src/index.js"></script>
+</head>
+<body>
+<div class="window">
+  <div class="window-content">
+    <div class="pane-group">
+      <div class="pane">
+        <form class="padded-less">
+          <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" placeholder="What to download?">
+          </div>
+          <div class="form-group">
+            <label for="proxyHost">Proxy Host</label>
+            <input type="text" class="form-control" id="proxyHost" placeholder="host">
+          </div>
+          <div class="form-group">
+            <label for="proxyPort">Port</label>
+            <input type="text" class="form-control" id="proxyPort" placeholder="port">
+          </div>
+          <div class="form-group">
+            <label for="proxyUser">User</label>
+            <input type="text" class="form-control" id="proxyUser" placeholder="user name">
+          </div>
+          <div class="form-group">
+            <label for="proxyPassword">Password</label>
+            <input type="password" class="form-control" id="proxyPassword" placeholder="password">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary pull-right" onclick="download();">Download</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="toolbar toolbar-footer">
+    <h1 class="title"><span class="icon icon-feather"> </span>Built by Parker with Coffee</h1>
+  </footer>
+</div>
+<script>
+    loadConfig();
+</script>
+</body>
 </html>
