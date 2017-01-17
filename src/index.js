@@ -1,4 +1,4 @@
-require('jquery');
+require('angular');
 const os = require('os');
 const fs = require('fs');
 const request = require('request');
@@ -6,50 +6,56 @@ const Config = require('electron-config');
 const config = new Config();
 
 
+var app = angular.module('App', []);
 
-function loadConfig() {
-    $('#proxyHost').val(config.get('proxy.host'));
-    $('#proxyPort').val(config.get('proxy.port'));
-    $('#proxyUser').val(config.get('proxy.username'));
-    console.log('loaded default config.');
-}
+app.controller('FormController', function FormController($scope) {
+    $scope.data = {};
 
-
-function download() {
-    console.log('download called.');
-    var url = $('#url').val();
-    console.log(url);
-    var host = $('#proxyHost').val();
-    var port = $('#proxyPort').val();
-    var user = $('#proxyUser').val();
-    var password = $('#proxyPassword').val();
-    if (host && port && user && password) {
-        var proxy = `http://${user}:${password}@${host}:${port}`;
-    } else {
-        var proxy = "";
+    $scope.reset = function () {
+        $scope.data.url = null;
+        $scope.data.proxyPassword = null;
+        $scope.loadConfig();
     }
-    console.log(proxy);
-    requestWithProxy(url, proxy);
 
-    config.set('proxy.host', host);
-    config.set('proxy.port', port);
-    config.set('proxy.username', user);
-}
+    $scope.loadConfig = function () {
+        $scope.data.proxyHost = config.get('proxy.host');
+        $scope.data.proxyPort = config.get('proxy.port');
+        $scope.data.proxyUsername = config.get('proxy.username');
+    }
 
-function requestWithProxy(url, proxy) {
-    var filename = url.split('/').pop().split('#')[0].split('?')[0];
-    var saveAs = `${os.homedir()}/Desktop/${filename}`;
-    console.log(`download [${url}] as [${saveAs}] via proxy [${proxy}]`);
-    var r = request.defaults({
-        //'proxy': proxy
-    });
-    r.get(url)
-        .on('response', function(response) {
-            var status = response.statusCode;
-            var type = response.headers['content-type'];
-            var length = response.headers['content-length'];
-            console.log(`Status [${status}], Content Type [${type}], Content Length [${length}]`);
-        })
-        .pipe(fs.createWriteStream(saveAs));
-    console.log("download completed.");
-}
+    $scope.saveConfig = function () {
+        config.set('proxy.host', $scope.data.proxyHost);
+        config.set('proxy.port', $scope.data.proxyPort);
+        config.set('proxy.username', $scope.data.proxyUsername);
+    }
+
+    $scope.validate = function () {
+        return true;
+    }
+
+
+    $scope.download = function () {
+        if ($scope.validate()) {
+            var d = $scope.data;
+            var proxy = `http://${d.proxyUsername}:${d.proxyPassword}@${d.proxyHost}:${d.proxyPort}`;
+            var filename = d.url.split('/').pop().split('#')[0].split('?')[0];
+            var saveAs = `${os.homedir()}/Desktop/${filename}`;
+            console.log(`download [${d.url}] as [${saveAs}] via proxy [${proxy}]`);
+            var r = request.defaults({
+                'proxy': proxy
+            });
+            r.get(d.url)
+                .on('response', function (response) {
+                    var status = response.statusCode;
+                    var type = response.headers['content-type'];
+                    var length = response.headers['content-length'];
+                    console.log(`Status [${status}], Content Type [${type}], Content Length [${length}]`);
+                })
+                .pipe(fs.createWriteStream(saveAs));
+
+            $scope.saveConfig();
+        }
+    }
+
+    $scope.reset();
+});

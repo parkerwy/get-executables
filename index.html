@@ -1,42 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="App">
 <head>
   <meta charset="UTF-8">
   <title>Get Executables</title>
   <link href="node_modules/photonkit/dist/css/photon.css" rel="stylesheet" type="text/css">
-  <script>
-      window.$ = window.jQuery = require('jquery');
-  </script>
   <script src="src/index.js"></script>
 </head>
 <body>
-<div class="window">
+<div class="window" ng-controller="FormController">
   <div class="window-content">
     <div class="pane-group">
       <div class="pane">
         <form class="padded-less">
           <div class="form-group">
             <label for="url">URL</label>
-            <input type="text" class="form-control" id="url" placeholder="What to download?">
+            <input type="text" class="form-control" id="url" placeholder="What to download?" ng-model="data.url">
           </div>
           <div class="form-group">
             <label for="proxyHost">Proxy Host</label>
-            <input type="text" class="form-control" id="proxyHost" placeholder="host">
+            <input type="text" class="form-control" id="proxyHost" placeholder="host" ng-model="data.proxyHost">
           </div>
           <div class="form-group">
             <label for="proxyPort">Port</label>
-            <input type="text" class="form-control" id="proxyPort" placeholder="port">
+            <input type="text" class="form-control" id="proxyPort" placeholder="port" ng-model="data.proxyPort">
           </div>
           <div class="form-group">
             <label for="proxyUser">User</label>
-            <input type="text" class="form-control" id="proxyUser" placeholder="user name">
+            <input type="text" class="form-control" id="proxyUser" placeholder="user name"
+                   ng-model="data.proxyUsername">
           </div>
           <div class="form-group">
             <label for="proxyPassword">Password</label>
-            <input type="password" class="form-control" id="proxyPassword" placeholder="password">
+            <input type="password" class="form-control" id="proxyPassword" placeholder="password"
+                   ng-model="data.proxyPassword">
           </div>
           <div class="form-actions">
-            <button type="button" class="btn btn-primary pull-right" onclick="download();">Download</button>
+            <button type="button" class="btn btn-default" ng-click="reset()">Reset</button>
+            <button type="button" class="btn btn-primary pull-right" ng-click="download()">Download</button>
           </div>
         </form>
       </div>
@@ -46,8 +46,5 @@
     <h1 class="title"><span class="icon icon-feather"> </span>Built by Parker with Coffee</h1>
   </footer>
 </div>
-<script>
-    loadConfig();
-</script>
 </body>
 </html>
