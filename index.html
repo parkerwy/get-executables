@@ -1,50 +1,60 @@
 <!DOCTYPE html>
-<html ng-app="App">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Get Executables</title>
-  <link href="node_modules/photonkit/dist/css/photon.css" rel="stylesheet" type="text/css">
-  <script src="src/index.js"></script>
+  <link href="node_modules/angular-material/angular-material.css" rel="stylesheet"/>
 </head>
-<body>
-<div class="window" ng-controller="FormController">
-  <div class="window-content">
-    <div class="pane-group">
-      <div class="pane">
-        <form class="padded-less">
-          <div class="form-group">
-            <label for="url">URL</label>
-            <input type="text" class="form-control" id="url" placeholder="What to download?" ng-model="data.url">
-          </div>
-          <div class="form-group">
-            <label for="proxyHost">Proxy Host</label>
-            <input type="text" class="form-control" id="proxyHost" placeholder="host" ng-model="data.proxyHost">
-          </div>
-          <div class="form-group">
-            <label for="proxyPort">Port</label>
-            <input type="text" class="form-control" id="proxyPort" placeholder="port" ng-model="data.proxyPort">
-          </div>
-          <div class="form-group">
-            <label for="proxyUser">User</label>
-            <input type="text" class="form-control" id="proxyUser" placeholder="user name"
-                   ng-model="data.proxyUsername">
-          </div>
-          <div class="form-group">
-            <label for="proxyPassword">Password</label>
-            <input type="password" class="form-control" id="proxyPassword" placeholder="password"
-                   ng-model="data.proxyPassword">
-          </div>
-          <div class="form-actions">
-            <button type="button" class="btn btn-default" ng-click="reset()">Reset</button>
-            <button type="button" class="btn btn-primary pull-right" ng-click="download()">Download</button>
-          </div>
-        </form>
-      </div>
+<body ng-app="App" layout="column">
+<script src="src/index.js"></script>
+<md-toolbar layout="row" layout-align="center center">
+  <h3>╭∩╮（︶︿︶）╭∩╮</h3>
+</md-toolbar>
+
+<!-- Container #4 -->
+<md-content flex id="content" layout="column" layout-align="start center">
+  <form ng-controller="FormController">
+
+    <div layout="column">
+      <md-input-container>
+        <label for="url">URL</label>
+        <input type="text" id="url" placeholder="What to download?" ng-model="data.url">
+      </md-input-container>
     </div>
+    <div layout="row">
+      <md-input-container>
+        <label for="proxyHost">Proxy Host</label>
+        <input type="text" class="form-control" id="proxyHost" placeholder="host" ng-model="data.proxyHost">
+      </md-input-container>
+      <md-input-container>
+        <label for="proxyPort">Proxy Port</label>
+        <input type="text" class="form-control" id="proxyPort" placeholder="port" ng-model="data.proxyPort">
+      </md-input-container>
+    </div>
+    <div layout="row">
+      <md-input-container>
+        <label for="proxyUser">Proxy User</label>
+        <input type="text" class="form-control" id="proxyUser" placeholder="user name"
+               ng-model="data.proxyUsername">
+      </md-input-container>
+      <md-input-container>
+        <label for="proxyPassword">Proxy Password</label>
+        <input type="password" class="form-control" id="proxyPassword" placeholder="password"
+               ng-model="data.proxyPassword">
+      </md-input-container>
+    </div>
+    <md-input-container layout="row" layout-align="center start">
+      <md-button type="button" class="md-accent" ng-click="reset()">Reset</md-button>
+      <md-button type="button" class="md-primary" ng-click="download()">Download</md-button>
+    </md-input-container>
+  </form>
+</md-content>
+<hr/>
+<footer>
+  <div layout="row" layout-align="center center" style="background-color: rgb(63,81,181);
+    color: rgba(255,255,255,0.87);" flex="noshrink">
+    <span class="md-subhead">Built by Parker with Coffee</span>
   </div>
-  <footer class="toolbar toolbar-footer">
-    <h1 class="title"><span class="icon icon-feather"> </span>Built by Parker with Coffee</h1>
-  </footer>
-</div>
+</footer>
 </body>
 </html>

@@ -1,4 +1,7 @@
 require('angular');
+require('angular-animate');
+require('angular-aria');
+require('angular-material');
 const os = require('os');
 const fs = require('fs');
 const request = require('request');
@@ -6,7 +9,7 @@ const Config = require('electron-config');
 const config = new Config();
 
 
-var app = angular.module('App', []);
+var app = angular.module('App', ['ngMaterial']);
 
 app.controller('FormController', function FormController($scope) {
     $scope.data = {};
