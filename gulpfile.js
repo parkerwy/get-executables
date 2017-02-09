@@ -16,6 +16,7 @@ gulp.task('run', function () {
 
 gulp.task('package', ['clean'], function () {
 
+    childProcess.spawn('npm', ['install'], {cwd: './app/', stdio: 'inherit'});
     gulp.src("")
         .pipe(gulpElectron({
             src: './app',
