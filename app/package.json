@@ -1,8 +1,8 @@
 {
   "name": "get-executables",
   "version": "1.0.0",
-  "description": "Get Executables :: Builder",
-  "main": "gulpfile.js",
+  "description": "Get executables via proxy.",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,17 +10,20 @@
     "type": "git",
     "url": "git+https://github.com/parkerwy/get-executables.git"
   },
-  "author": "",
+  "author": "Parker Wang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/parkerwy/get-executables/issues"
   },
   "homepage": "https://github.com/parkerwy/get-executables#readme",
-  "devDependencies": {
+  "dependencies": {
+    "angular": "~1.5.11",
+    "angular-animate": "~1.5.11",
+    "angular-aria": "~1.5.11",
+    "angular-material": "~1.1.3",
     "electron": "^1.4.13",
-    "electron-prebuilt": "^1.4.13",
-    "electron-packager": "^8.5.1",
-    "gulp": "^3.9.1",
-    "gulp-electron": "^0.1.3"
-  }
+    "electron-config": "^0.2.1",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {}
 }
