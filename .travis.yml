@@ -6,9 +6,7 @@ before_script:
 script: gulp package
 before_deploy:
   - export MAC_RELEASE_PKG_FILE=$(ls release/*/*-darwin-x64.zip)
-  - echo "deploying $MAC_RELEASE_PKG_FILE to GitHub releases"
   - export WIN32_RELEASE_PKG_FILE=$(ls release/*/*-win32-ia32.zip)
-  - echo "deploying $WIN32_RELEASE_PKG_FILE to GitHub releases"
 deploy:
   provider: releases
   api_key:

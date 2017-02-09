@@ -1,15 +1,20 @@
 var gulp = require('gulp');
 var childProcess = require('child_process');
+var del = require('del');
 var electron = require('electron');
 var gulpElectron = require('gulp-electron');
 var packageJson = require('./app/package.json');
 
 
+gulp.task("clean", function () {
+    return del("./release");
+});
+
 gulp.task('run', function () {
     childProcess.spawn(electron, ['./app'], {stdio: 'inherit'});
 });
 
-gulp.task('package', function () {
+gulp.task('package', ['clean'], function () {
 
     gulp.src("")
         .pipe(gulpElectron({
