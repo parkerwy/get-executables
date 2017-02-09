@@ -6,20 +6,22 @@ before_script:
 script: gulp package
 before_deploy:
   - export MAC_RELEASE_PKG_FILE=$(ls release/*/*-darwin-x64.zip)
-  - echo "deploying MAC_RELEASE_PKG_FILE to GitHub releases"
+  - echo "deploying $MAC_RELEASE_PKG_FILE to GitHub releases"
   - export WIN32_RELEASE_PKG_FILE=$(ls release/*/*-win32-ia32.zip)
-  - echo "deploying WIN32_RELEASE_PKG_FILE to GitHub releases"
+  - echo "deploying $WIN32_RELEASE_PKG_FILE to GitHub releases"
 deploy:
   provider: releases
   api_key:
     secure: T7aqVwN+pR8zePqQsHkoNUACTIYlU4N+vk6jmjFMnchRML/DUaRxUSLfEUEnK0n7E7ifix1EQsBtH16OvcPgo1Y8uxyN0g68jMOnZHDtxx/8KE/zxEZax1PxL9uo6tHscdHSBCdSuXoMU8FJ3N2EfJ/UG0tT1Jv5qYL1RjOYDfBOWKkIKf3vbqwztuXWPI7CQ7ogrrNW24C7Mo2d1b61fL2b2Ct9ujOUInzEQNnOE4zuJz+CpKwzfdgCcaP7PH4INYG2X5FJfBtcwHyYrk/QdL5pKn1/Ga6NsPKUtiVoi5sk4fnSrBph88wXuKTC8PLfENW8sJJJg0PLbkA/3VweCFSB/nvQtJtRYVtvlLwzyJnHRGRfhCEOu8kdssU+5Ae41Y2WQD9uv7oxN/xcbsDYa9wMr3QNUqCjHTaZ8KVqW2Ix3Ld27BHJj3zyenYs/NQgVFIViwzEElyLndmq/pPYNy5TugPtt10wI1fGEhtLawzo8blUPkPtkCQ5/T8wJX7Der08D4CZVcu+3qpnpuXV2DZUzAsf17igwTQRD7auZibXLbSY6Dwcza7gf8ei8mLDxRyS+ONSVQjHKvk/EY0QivPVM+N8wnQ7aF1EmP11oX+jL6/wA3Zt+2T3ZE6KCouXHmVbNMVY+/YIEVlI0fS0pNlGxHVi8vYA8dvYiHE/M9I=
   file:
-    - "MAC_RELEASE_PKG_FILE"
-    - "WIN32_RELEASE_PKG_FILE"
+    - "${MAC_RELEASE_PKG_FILE}"
+    - "${WIN32_RELEASE_PKG_FILE}"
   skip_cleanup: true
   on:
     repo: parkerwy/get-executables
     tags: true
+notifications:
+  email: false
 
 
 
