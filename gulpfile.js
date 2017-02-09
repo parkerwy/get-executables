@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var childProcess = require('child_process');
-var electron = require('electron-prebuilt');
+var electron = require('electron');
 var gulpElectron = require('gulp-electron');
 var packageJson = require('./app/package.json');
 

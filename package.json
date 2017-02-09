@@ -18,7 +18,6 @@
   "homepage": "https://github.com/parkerwy/get-executables#readme",
   "devDependencies": {
     "electron": "^1.4.13",
-    "electron-prebuilt": "^1.4.13",
     "electron-packager": "^8.5.1",
     "gulp": "^3.9.1",
     "gulp-electron": "^0.1.3"
